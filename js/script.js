@@ -35,7 +35,7 @@ continue_btn.onclick = ()=>{
     quiz_box.classList.add("activeQuiz"); //show quiz box
     mySet1.add(randomNum)
     // console.log(randomNum)
-    showQuestions(randomNum); //calling showQestions function
+    showQuestions(randomNum); //calling showQuestions function
     queCounter(1); //passing 1 parameter to queCounter
     startTimer(15); //calling startTimer function
     startTimerLine(0); //calling startTimerLine function
@@ -67,6 +67,7 @@ restart_quiz.onclick = ()=>{
     randomNum = getRandomInt(0,10);
     showQuestions(randomNum); //calling showQestions function
     mySet1.add(randomNum)
+    console.log("QUESTION NUMBER "+que_numb)
     queCounter(que_numb); //passing que_numb value to queCounter
     clearInterval(counter); //clear counter
     clearInterval(counterLine); //clear counterLine
@@ -86,10 +87,11 @@ const bottom_ques_counter = document.querySelector("footer .total_que");
 
 // if Next button clicked
 next_btn.onclick = ()=>{
-    if(que_count < questions.length - 1){ //if question count is less than total question length
+    console.log("QUESTIONS LENGTH "+ questions.length)
+    if(que_count < 10 - 1){ //if question count is less than total question length
+        
         que_count++; //increment the que_count value
         que_numb++; //increment the que_numb value
-        
         while(mySet1.has(randomNum)){
             if(que_count > 5){
                 randomNum = getRandomInt(10,20)
@@ -113,13 +115,12 @@ next_btn.onclick = ()=>{
         clearInterval(counterLine); //clear counterLine
         showResult(); //calling showResult function
     }
+        
 }
 
 // getting questions and options from array
 function showQuestions(index){
     const que_text = document.querySelector(".que_text");
-    //creating a new span and div tag for question and option and passing the value using array index
-    // let que_tag = '<span>'+ "HARD" +'</span>';
     
     let option_tag = '<div class="option">' + `<img src="${questions[index].options[0]}" width="260" height="260">` + '</div>'
     + '<div class="option">' + `<img src="${questions[index].options[1]}" width="260" height="260">` + '</div>';
@@ -153,7 +154,7 @@ function optionSelected(answer){
     const allOptions = option_list.children.length; //getting all option items
     
     if(userAns == correcAns){ //if user selected option is equal to array's correct answer
-        if (questions[randomNum].numb > 9){
+        if (questions[randomNum].numb > 10){
             userScore += 5000;
         }else{
             userScore += 1000; //upgrading score value with 1
@@ -240,6 +241,6 @@ function startTimerLine(time){
 
 function queCounter(index){
     //creating a new span tag and passing the question number and total question
-    let totalQueCounTag = '<span><p>'+ index +'</p> of <p>'+ questions.length +'</p> Questions</span>';
+    let totalQueCounTag = '<span><p>'+ index +'</p> of <p>'+ 10 +'</p> Questions</span>';
     bottom_ques_counter.innerHTML = totalQueCounTag;  //adding new span tag inside bottom_ques_counter
 }
