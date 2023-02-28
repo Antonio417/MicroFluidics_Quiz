@@ -10,6 +10,12 @@ const time_line = document.querySelector("header .time_line");
 const timeText = document.querySelector(".timer .time_left_txt");
 const timeCount = document.querySelector(".timer .timer_sec");
 
+function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min) + min); // The maximum is exclusive and the minimum is inclusive
+  }
+
 // if startQuiz button clicked
 start_btn.onclick = ()=>{
     info_box.classList.add("activeInfo"); //show info box
@@ -20,15 +26,22 @@ exit_btn.onclick = ()=>{
     info_box.classList.remove("activeInfo"); //hide info box
 }
 
+const mySet1 = new Set();
+let randomNum = getRandomInt(0,6);
+
 // if continueQuiz button clicked
 continue_btn.onclick = ()=>{
     info_box.classList.remove("activeInfo"); //hide info box
     quiz_box.classList.add("activeQuiz"); //show quiz box
-    showQuestions(0); //calling showQestions function
+    mySet1.add(randomNum)
+    console.log(randomNum)
+    showQuestions(randomNum); //calling showQestions function
     queCounter(1); //passing 1 parameter to queCounter
     startTimer(15); //calling startTimer function
     startTimerLine(0); //calling startTimerLine function
 }
+
+
 
 let timeValue =  15;
 let que_count = 0;
@@ -51,7 +64,11 @@ restart_quiz.onclick = ()=>{
     userScore = 0;
     widthValue = 0;
     quizHeader.classList.remove("quiz_box_hard")
-    showQuestions(que_count); //calling showQestions function
+
+    mySet1.clear();
+    randomNum = getRandomInt(0,6);
+    showQuestions(randomNum); //calling showQestions function
+    mySet1.add(randomNum)
     queCounter(que_numb); //passing que_numb value to queCounter
     clearInterval(counter); //clear counter
     clearInterval(counterLine); //clear counterLine
@@ -74,7 +91,19 @@ next_btn.onclick = ()=>{
     if(que_count < questions.length - 1){ //if question count is less than total question length
         que_count++; //increment the que_count value
         que_numb++; //increment the que_numb value
-        showQuestions(que_count); //calling showQestions function
+        
+      
+        while(mySet1.has(randomNum)){
+            if(que_count > 5){
+                randomNum = getRandomInt(6,10)
+            }
+            else{
+                randomNum = getRandomInt(0,6)
+            }
+        }
+
+        mySet1.add(randomNum)
+        showQuestions(randomNum); //calling showQestions function
         queCounter(que_numb); //passing que_numb value to queCounter
         clearInterval(counter); //clear counter
         clearInterval(counterLine); //clear counterLine
@@ -91,11 +120,14 @@ next_btn.onclick = ()=>{
 
 // getting questions and options from array
 function showQuestions(index){
+   
     const que_text = document.querySelector(".que_text");
     //creating a new span and div tag for question and option and passing the value using array index
     // let que_tag = '<span>'+ "HARD" +'</span>';
+    
     let option_tag = '<div class="option">' + `<img src="${questions[index].options[0]}" width="260" height="260">` + '</div>'
     + '<div class="option">' + `<img src="${questions[index].options[1]}" width="260" height="260">` + '</div>';
+    
     if (que_count > 5){
         // que_text.innerHTML = que_tag; //adding new span tag inside que_tag
         const quizHeader = document.getElementById("quizHeader");
@@ -119,13 +151,13 @@ function optionSelected(answer){
     clearInterval(counter); //clear counter
     clearInterval(counterLine); //clear counterLine
     let userAns = answer.firstChild.getAttribute("src");
-    let correcAns = questions[que_count].answer; //getting correct answer from array
+    let correcAns = questions[randomNum].answer; //getting correct answer from array
     console.log(userAns);
     console.log(correcAns);
     const allOptions = option_list.children.length; //getting all option items
     
     if(userAns == correcAns){ //if user selected option is equal to array's correct answer
-        if (questions[que_count].numb > 5){
+        if (questions[randomNum].numb > 5){
             userScore += 5000;
         }else{
             userScore += 1000; //upgrading score value with 1
