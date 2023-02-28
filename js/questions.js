@@ -4,9 +4,9 @@ let questions = [
     {
     numb: 1,
     question: "Which sperm is normal?",
-    answer: "Images/Normal/Easy/easy1.jpeg",
+    answer: "Images/Normal/Easy/easy1.jpg",
     options: [
-      "Images/Normal/Easy/easy1.jpeg",
+      "Images/Normal/Easy/easy1.jpg",
       "Images/Abnormal/Easy/easy1.jpg"
     ]
   },

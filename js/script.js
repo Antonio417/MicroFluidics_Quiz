@@ -27,21 +27,19 @@ exit_btn.onclick = ()=>{
 }
 
 const mySet1 = new Set();
-let randomNum = getRandomInt(0,9);
+let randomNum = getRandomInt(0,10);
 
 // if continueQuiz button clicked
 continue_btn.onclick = ()=>{
     info_box.classList.remove("activeInfo"); //hide info box
     quiz_box.classList.add("activeQuiz"); //show quiz box
     mySet1.add(randomNum)
-    console.log(randomNum)
+    // console.log(randomNum)
     showQuestions(randomNum); //calling showQestions function
     queCounter(1); //passing 1 parameter to queCounter
     startTimer(15); //calling startTimer function
     startTimerLine(0); //calling startTimerLine function
 }
-
-
 
 let timeValue =  15;
 let que_count = 0;
@@ -66,7 +64,7 @@ restart_quiz.onclick = ()=>{
     quizHeader.classList.remove("quiz_box_hard")
 
     mySet1.clear();
-    randomNum = getRandomInt(0,11);
+    randomNum = getRandomInt(0,10);
     showQuestions(randomNum); //calling showQestions function
     mySet1.add(randomNum)
     queCounter(que_numb); //passing que_numb value to queCounter
@@ -92,10 +90,9 @@ next_btn.onclick = ()=>{
         que_count++; //increment the que_count value
         que_numb++; //increment the que_numb value
         
-      
         while(mySet1.has(randomNum)){
             if(que_count > 5){
-                randomNum = getRandomInt(10,21)
+                randomNum = getRandomInt(10,20)
             }
             else{
                 randomNum = getRandomInt(0,10)
@@ -120,7 +117,6 @@ next_btn.onclick = ()=>{
 
 // getting questions and options from array
 function showQuestions(index){
-   
     const que_text = document.querySelector(".que_text");
     //creating a new span and div tag for question and option and passing the value using array index
     // let que_tag = '<span>'+ "HARD" +'</span>';
