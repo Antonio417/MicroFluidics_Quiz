@@ -58,6 +58,42 @@ let questions = [
     {
     numb: 7,
     question: "Which sperm is normal?",
+    answer: "Images/Normal/Easy/easy5.jpg",
+    options: [
+      "Images/Normal/Easy/easy5.jpg",
+      "Images/Abnormal/Easy/easy5.jpg"
+    ]
+  },
+    {
+    numb: 8,
+    question: "Which sperm is normal?",
+    answer: "Images/Normal/Easy/easy5.jpg",
+    options: [
+      "Images/Normal/Easy/easy5.jpg",
+      "Images/Abnormal/Easy/easy5.jpg"
+    ]
+  },
+    {
+    numb: 9,
+    question: "Which sperm is normal?",
+    answer: "Images/Normal/Easy/easy5.jpg",
+    options: [
+      "Images/Normal/Easy/easy5.jpg",
+      "Images/Abnormal/Easy/easy5.jpg"
+    ]
+  },
+    {
+    numb: 10,
+    question: "Which sperm is normal?",
+    answer: "Images/Normal/Easy/easy5.jpg",
+    options: [
+      "Images/Normal/Easy/easy5.jpg",
+      "Images/Abnormal/Easy/easy5.jpg"
+    ]
+  },
+    {
+    numb: 11,
+    question: "Which sperm is normal?",
     answer: "Images/Normal/Hard/hard1.jpg",
     options: [
       "Images/Normal/Hard/hard1.jpg",
@@ -65,7 +101,7 @@ let questions = [
     ]
   },
     {
-    numb: 8,
+    numb: 12,
     question: "Which sperm is normal?",
     answer: "Images/Normal/Hard/hard2.jpg",
     options: [
@@ -74,7 +110,7 @@ let questions = [
     ]
   },
     {
-    numb: 9,
+    numb: 13,
     question: "Which sperm is normal?",
     answer: "Images/Normal/Hard/hard3.jpg",
     options: [
@@ -83,7 +119,7 @@ let questions = [
     ]
   },
     {
-    numb: 10,
+    numb: 14,
     question: "Which sperm is normal?",
     answer: "Images/Normal/Hard/hard4.jpg",
     options: [
