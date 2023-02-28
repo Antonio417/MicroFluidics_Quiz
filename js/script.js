@@ -66,7 +66,7 @@ restart_quiz.onclick = ()=>{
     quizHeader.classList.remove("quiz_box_hard")
 
     mySet1.clear();
-    randomNum = getRandomInt(0,9);
+    randomNum = getRandomInt(0,11);
     showQuestions(randomNum); //calling showQestions function
     mySet1.add(randomNum)
     queCounter(que_numb); //passing que_numb value to queCounter
@@ -95,14 +95,14 @@ next_btn.onclick = ()=>{
       
         while(mySet1.has(randomNum)){
             if(que_count > 5){
-                randomNum = getRandomInt(10,20)
+                randomNum = getRandomInt(10,21)
             }
             else{
                 randomNum = getRandomInt(0,10)
             }
         }
-
         mySet1.add(randomNum)
+
         showQuestions(randomNum); //calling showQestions function
         queCounter(que_numb); //passing que_numb value to queCounter
         clearInterval(counter); //clear counter
