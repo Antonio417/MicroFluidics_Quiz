@@ -27,7 +27,7 @@ exit_btn.onclick = ()=>{
 }
 
 const mySet1 = new Set();
-let randomNum = getRandomInt(0,6);
+let randomNum = getRandomInt(0,9);
 
 // if continueQuiz button clicked
 continue_btn.onclick = ()=>{
@@ -66,7 +66,7 @@ restart_quiz.onclick = ()=>{
     quizHeader.classList.remove("quiz_box_hard")
 
     mySet1.clear();
-    randomNum = getRandomInt(0,6);
+    randomNum = getRandomInt(0,9);
     showQuestions(randomNum); //calling showQestions function
     mySet1.add(randomNum)
     queCounter(que_numb); //passing que_numb value to queCounter
@@ -95,10 +95,10 @@ next_btn.onclick = ()=>{
       
         while(mySet1.has(randomNum)){
             if(que_count > 5){
-                randomNum = getRandomInt(6,10)
+                randomNum = getRandomInt(10,20)
             }
             else{
-                randomNum = getRandomInt(0,6)
+                randomNum = getRandomInt(0,10)
             }
         }
 
@@ -157,7 +157,7 @@ function optionSelected(answer){
     const allOptions = option_list.children.length; //getting all option items
     
     if(userAns == correcAns){ //if user selected option is equal to array's correct answer
-        if (questions[randomNum].numb > 5){
+        if (questions[randomNum].numb > 9){
             userScore += 5000;
         }else{
             userScore += 1000; //upgrading score value with 1
